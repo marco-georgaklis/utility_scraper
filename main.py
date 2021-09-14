@@ -24,6 +24,7 @@ utilities = [
     "rsync"
 ]
 
+
 def parse_page(utility):
     """Parses the page for a particular utility in the man7.org man pages
     
@@ -42,7 +43,7 @@ def parse_page(utility):
             flag3: [],
         }
     """
-    
+
     utility_url = f'https://man7.org/linux/man-pages/man1/{utility}.1.html'
     r = requests.get(utility_url)
     soup = BeautifulSoup(r.text)
@@ -53,8 +54,9 @@ def parse_page(utility):
     flags = [line.split(" ")[0] for line in flag_lines]
     clean_flags = [f if f[-1] not in punctuation else f[:-1] for f in flags]
     clean_flags = [f if "[" not in f else f.split("[")[0] for f in clean_flags]
-    d = {flag:[] for flag in clean_flags}
+    d = {flag: [] for flag in clean_flags}
     return d
+
 
 def build_utility_structure(utility_list, d=None):
     """Builds a data structure mapping utilities to their flags
@@ -82,12 +84,11 @@ def build_utility_structure(utility_list, d=None):
         }
 
     """
-    
+
     if d is None:
         d = {}
-        
+
     for utility in utility_list:
         d[utility] = parse_page(utility)
-        
+
     return d
-        
