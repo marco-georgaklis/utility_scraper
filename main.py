@@ -28,7 +28,7 @@ utilities = [
 def parse_page(utility):
     """Parses the page for a particular utility in the man7.org man pages
     
-    For a given utlity, the function scrapes the html from the man page
+    For a given utility, the function scrapes the html from the man page
     at man7.org and parses the html for the available options for the given
     utility.
     
@@ -61,15 +61,15 @@ def parse_page(utility):
 def build_utility_structure(utility_list, d=None):
     """Builds a data structure mapping utilities to their flags
     
-    For a list of utlities, it parses man7.org for the appropriate flags and
+    For a list of utilities, it parses man7.org for the appropriate flags and
     builds a dictionary mapping the utility to its flags.
     
-    :param list utility_list: A list of utlities to 
+    :param list utility_list: A list of utilities to
     :param dictionary d: A dictionary to built the data structure off of.
         Defaults to None.
         
     :returns dictionary that maps each utility to a dictionary that maps
-        each flag for the utiltiy to an empty list. Example:
+        each flag for the utility to an empty list. Example:
         
         {
             utility1:
